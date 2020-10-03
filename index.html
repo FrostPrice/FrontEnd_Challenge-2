@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/InputContainer.css" />
+    <link rel="stylesheet" href="CSS/footer.css" />
+  </head>
+  <body>
+    <div class="body-size">
+      <nav class="nav-bar">
+        <h1 class="page-title">Shopping List</h1>
+        <button class="add-item-button">
+          <img src="Symbols/addItem.svg" alt="An icon that means addition" />
+        </button>
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search-items-bar"
+            placeholder="Search your items"
+          />
+          <img
+            src="Symbols/searchIcon.svg"
+            alt="An search icon"
+            class="search-icon"
+          />
+        </div>
+      </nav>
+      <hr class="nav-bar-line" />
+      <main class="cart-items">
+        <div class="items-filter">
+          <p class="items-filter-text">Item <img src="Symbols/Sort.svg" /></p>
+          <p>Price <img src="Symbols/Sort.svg" /></p>
+          <p>Quantity <img src="Symbols/Sort.svg" /></p>
+          <p>Total <img src="Symbols/Sort.svg" /></p>
+        </div>
+        <section>
+          <script src="products.js"></script>
+        </section>
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="total-amount">Total:</div>
+      <button class="checkout-button">Checkout</button>
+    </footer>
+  </body>
+  <script src="index.js"></script>
+</html>
