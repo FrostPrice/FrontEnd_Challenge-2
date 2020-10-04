@@ -24,6 +24,10 @@ const removeNewItem = document.createElement("img");
 removeNewItem.setAttribute("src", "Symbols/removeItem.svg");
 removeNewItemButton.appendChild(removeNewItem);
 newItemTitle.appendChild(removeNewItemButton);
+removeNewItemButton.addEventListener("click", () => {
+  const removeButtonClicked = event.target;
+  removeButtonClicked.parentElement.parentElement.remove();
+});
 
 // Creates a button to add new items
 
@@ -42,6 +46,7 @@ const productsContainer = document.querySelector(".cart-items");
 const createInputName = document.createElement("input");
 const createInputQuantity = document.createElement("input");
 const createInputPrice = document.createElement("input");
+
 const addItemInput = () => {
   createInputName.setAttribute("placeholder", "e.g: Banana, Apple");
   createInputQuantity.setAttribute("placeholder", "e.g: 1un, 12un");
@@ -62,11 +67,6 @@ const addItemInput = () => {
     createInputPrice,
     newItemButton
   );
-
-  newItemButton.addEventListener("click", () => {
-    const createNewItem = document.createElement(newProductsArray);
-    createNewItem.appendChild(createInputName.value);
-  });
 };
 
 addItem.addEventListener("click", () => {
