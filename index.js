@@ -4,9 +4,9 @@ const removeItem = document.getElementsByClassName("remove-item");
 
 for (let r = 0; r < removeItem.length; r++) {
   const removeButton = removeItem[r];
-  removeButton.addEventListener("click", (event) => {
-    const removeButtonClicked = event.target;
-    removeButtonClicked.parentElement.parentElement.parentElement.remove();
+  removeButton.addEventListener("click", () => {
+    const removeButtonClicked = document.querySelector(".item-information");
+    removeButtonClicked.remove();
   });
 }
 
@@ -25,8 +25,8 @@ removeNewItem.setAttribute("src", "Symbols/removeItem.svg");
 removeNewItemButton.appendChild(removeNewItem);
 newItemTitle.appendChild(removeNewItemButton);
 removeNewItemButton.addEventListener("click", () => {
-  const removeButtonClicked = event.target;
-  removeButtonClicked.parentElement.parentElement.remove();
+  const removeButtonClicked = document.querySelector("section")
+  removeButtonClicked.remove();
 });
 
 // Creates a button to add new items
@@ -41,6 +41,7 @@ newItemButton.appendChild(itemButtonText);
 
 // Add items to the shopping cart
 
+const newItemContainer = document.createElement("section")
 const addItem = document.querySelector(".add-item-button");
 const productsContainer = document.querySelector(".cart-items");
 const createInputName = document.createElement("input");
@@ -60,17 +61,42 @@ const addItemInput = () => {
   createInputQuantity.classList.add("new-input-items", "unit-item");
   createInputPrice.classList.add("new-input-items", "unit-item");
 
-  productsContainer.prepend(
+  newItemContainer.append(
     newItemTitle,
     createInputName,
     createInputQuantity,
     createInputPrice,
     newItemButton
+  )
+
+  productsContainer.prepend(
+    newItemContainer
   );
 };
+
+newItemButton.addEventListener("click", () => {
+  const test = document.createElement("h2");
+  const text = document.createTextNode(createInputName.value)
+  test.appendChild(text)
+  productsContainer.prepend(test)
+})
 
 addItem.addEventListener("click", () => {
   addItemInput();
 });
 
+
+
 // Increment and Decrement to an item quantity
+
+
+// Seach Bar
+// const searchBar = document.querySelector(".search-items-bar");
+
+// searchBar.addEventListener("keyup", (e) => {
+//   const searchItems = e.target.value.toLowerCase();
+//   const searchedItems = products.filter((item) => {
+//     return item.itemName.toLowerCase().includes(searchItems);
+//   });
+//   ProductsFilteredArray(searchedItems);
+// });
