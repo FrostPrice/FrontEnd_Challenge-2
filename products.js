@@ -73,91 +73,48 @@ const products = [
   },
 ];
 
-const ProductsArray = products.map((p) => {
+function newProductArray(name, quantity, price, total) {
   return `<article class="item-information">
-  <div class="item-identification">
-    <img src="Symbols/itemImage.svg" style="padding-right: 24px" />
-    <div>
-      <p class="text-item">${p.itemName}</p>
-      <p class="unit-item">${p.unit + "un."}</p>
-    </div>
+<div class="item-identification">
+  <img src="Symbols/itemImage.svg" style="padding-right: 24px" />
+  <div>
+    <p class="text-item">${name}</p>
+    <p class="unit-item">1un.</p>
   </div>
-  <p class="price-item text-item">$${p.itemPrice}</p>
+</div>
+<p class="price-item text-item">$${quantity}</p>
+<div class="item-quantity">
+  <button class="increment-button" id="">
+    <img
+      src="Symbols/addQuantity.svg"
+      alt="An icon that means addition"
+    />
+  </button>
+  <span class="text-item" id="item-quantity">${price}</span>
   <div class="item-quantity">
-    <button class="increment-button" id="">
+    <button class="increment-button" id="decrement-button">
       <img
-        src="Symbols/addQuantity.svg"
-        alt="An icon that means addition"
+        src="Symbols/removeQuantity.svg"
+        alt="An icon that will remove the quantity"
       />
     </button>
-    <span class="text-item" id="item-quantity">${p.quantity}</span>
-    <div class="item-quantity">
-      <button class="increment-button" id="decrement-button">
-        <img
-          src="Symbols/removeQuantity.svg"
-          alt="An icon that will remove the quantity"
-        />
-      </button>
-    </div>
   </div>
-  <div class="total-remove-item">
-    <p class="text-item" id="total-price-item">$${(p.itemPrice * p.quantity).toFixed(2)}</p>
-    <button class="remove-item">
-      <img src="Symbols/removeItem.svg" />
-    </button>
-  </div>
+</div>
+<div class="total-remove-item">
+  <p class="text-item" id="total-price-item">$${total}</p>
+  <button class="remove-item">
+    <img src="Symbols/removeItem.svg" />
+  </button>
+</div>
 </article>
 `;
-});
+}
 
+const productsArray = products.map((p) => {
+  name = p.itemName
+  price = p.itemPrice
+  quantity = p.quantity
+  return newProductArray(name, price, quantity, (price * quantity))
+})
 const section = document.querySelector("section");
-section.innerHTML = ProductsArray.join("");
-
-
-// const ProductsFilteredArray = (searchedItems) => {
-//   const showProducts = searchedItems
-//     .map((p) => {
-//       name = p.itemName;
-//       unit = p.unit;
-//       price = p.itemPrice;
-//       quantity = p.quantity;
-
-//       return `<article class="item-information">
-//     <div class="item-identification">
-//       <img src="Symbols/itemImage.svg" style="padding-right: 24px" />
-//       <div>
-//         <p class="text-item">${name}</p>
-//         <p class="unit-item">${unit}un.</p>
-//       </div>
-//     </div>
-//     <p class="price-item text-item">$${price}</p>
-//     <div class="item-quantity">
-//       <button class="increment-button">
-//         <img
-//           src="Symbols/addQuantity.svg"
-//           alt="An icon that means addition"
-//         />
-//       </button>
-//       <span class="text-item" id="item-quantity">${quantity}</span>
-//       <div class="item-quantity">
-//         <button class="increment-button" id="decrement-button">
-//           <img
-//             src="Symbols/removeQuantity.svg"
-//             alt="An icon that will remove the quantity"
-//           />
-//         </button>
-//       </div>
-//     </div>
-//     <div class="total-remove-item">
-//       <p class="text-item">$${(price * quantity).toFixed(2)}</p>
-//       <button class="remove-item">
-//         <img src="Symbols/removeItem.svg" />
-//       </button>
-//     </div>
-//   </article>
-//   `;
-//     })
-//     .join("");
-//   section.innerHTML = showProducts;
-// };
-
+section.innerHTML = productsArray.join("");

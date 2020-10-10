@@ -1,14 +1,19 @@
 // Remove items from the shopping cart
 
+function removeButtonClicked(className) {
+  const removeClicked = document.querySelector(className);
+  removeClicked.remove();
+}
+
 const removeItem = document.getElementsByClassName("remove-item");
 
 for (let r = 0; r < removeItem.length; r++) {
   const removeButton = removeItem[r];
   removeButton.addEventListener("click", () => {
-    const removeButtonClicked = document.querySelector(".item-information");
-    removeButtonClicked.remove();
+    removeButtonClicked(".item-information")
   });
 }
+
 
 // Creates a title for the New Item Input
 
@@ -25,8 +30,7 @@ removeNewItem.setAttribute("src", "Symbols/removeItem.svg");
 removeNewItemButton.appendChild(removeNewItem);
 newItemTitle.appendChild(removeNewItemButton);
 removeNewItemButton.addEventListener("click", () => {
-  const removeButtonClicked = document.querySelector("section")
-  removeButtonClicked.remove();
+  removeButtonClicked("section")
 });
 
 // Creates a button to add new items
@@ -47,6 +51,7 @@ const productsContainer = document.querySelector(".cart-items");
 const createInputName = document.createElement("input");
 const createInputQuantity = document.createElement("input");
 const createInputPrice = document.createElement("input");
+const productsStorage = document.querySelector("#products-storage")
 
 const addItemInput = () => {
   createInputName.setAttribute("placeholder", "e.g: Banana, Apple");
@@ -75,10 +80,11 @@ const addItemInput = () => {
 };
 
 newItemButton.addEventListener("click", () => {
-  const test = document.createElement("h2");
-  const text = document.createTextNode(createInputName.value)
-  test.appendChild(text)
-  productsContainer.prepend(test)
+  const newName = document.createTextNode(createInputName.value);
+  const newQuantity = document.createTextNode(createInputQuantity.value);
+  const newPrice = document.createTextNode(createInputPrice.value);
+  productsArray.innerHTML = newProductArray(newName, newQuantity, newPrice);
+
 })
 
 addItem.addEventListener("click", () => {
@@ -89,14 +95,14 @@ addItem.addEventListener("click", () => {
 
 // Increment and Decrement to an item quantity
 
+// Total amount in quantity
 
-// Seach Bar
-// const searchBar = document.querySelector(".search-items-bar");
+// Search bar
 
-// searchBar.addEventListener("keyup", (e) => {
-//   const searchItems = e.target.value.toLowerCase();
-//   const searchedItems = products.filter((item) => {
-//     return item.itemName.toLowerCase().includes(searchItems);
-//   });
-//   ProductsFilteredArray(searchedItems);
-// });
+const searchBar = document.querySelector(".search-items-bar");
+searchBar.addEventListener("keyup", (e) => {
+  const searchedItems = e.target.value;
+  filteredProducts = productsArray.filter((p)=> {
+  });
+});
+
