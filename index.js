@@ -97,12 +97,3 @@ addItem.addEventListener("click", () => {
 
 // Total amount in quantity
 
-// Search bar
-
-const searchBar = document.querySelector(".search-items-bar");
-searchBar.addEventListener("keyup", (e) => {
-  const searchedItems = e.target.value;
-  filteredProducts = productsArray.filter((p)=> {
-  });
-});
-
